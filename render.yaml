@@ -2,7 +2,7 @@ services:
   - type: web
     name: finance-bot
     env: python
-    repo: https://github.com/your-username/finance-bot
+    repo: https://github.com/artemsharonov-cyber/finance-bot
     plan: free
     branch: main
     buildCommand: pip install -r requirements.txt
