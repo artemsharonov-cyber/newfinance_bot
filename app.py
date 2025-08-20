@@ -2,7 +2,7 @@ import os
 import psycopg2
 from psycopg2 import pool
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler, MessageHandler, Filters
+from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler, MessageHandler, filters
 
 # Конфигурация PostgreSQL
 DATABASE_URL = os.getenv('DATABASE_URL')
@@ -164,7 +164,7 @@ def main():
     application.add_handler(CommandHandler('stats', stats))
     application.add_handler(CommandHandler('feedback', feedback))
     application.add_handler(CallbackQueryHandler(button_callback))
-    application.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     
     import asyncio
     async def set_webhook():
